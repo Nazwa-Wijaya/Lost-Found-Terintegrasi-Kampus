@@ -1,4 +1,3 @@
-﻿# Lost-Found-Terintegrasi-Kampus
 # Lost & Found Terintegrasi Kampus
 
 > Satu tempat resmi untuk melaporkan barang hilang, dan satu pintu (Admin) untuk mengembalikannya ke pemilik.
