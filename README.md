@@ -56,7 +56,26 @@ User tidak dapat mengakses halaman Admin. Hak akses dibedakan berdasarkan role.
 
 Berikut alur dari laporan dibuat sampai barang kembali ke pemilik, atau laporan kedaluwarsa.
 
-&#91;embedded content: alur laporan · jalur utama dan tiga jalur samping\]
+## Alur Sistem
+
+```mermaid
+flowchart TD
+    A["User membuat laporan<br/>PENDING"] --> B{"Admin memeriksa laporan"}
+    B -- Ditolak --> R["Ditolak<br/>REJECTED"]
+    B -- ACC --> C["Laporan disetujui<br/>ACTIVE · tampil di forum"]
+    C -- "3 hari tanpa cocok" --> E["Kedaluwarsa<br/>EXPIRED · jadi riwayat"]
+    C --> D["Barang temuan diserahkan ke Admin"]
+    D --> F{"Cocok dengan laporan?"}
+    F -- Tidak --> S["Barang disimpan Admin<br/>menunggu laporan cocok"]
+    F -- Ya --> G["Admin menghubungi pelapor<br/>FOUND"]
+    G --> H["Verifikasi kepemilikan"]
+    H --> I["Barang dikembalikan<br/>RETURNED"]
+
+    classDef stop fill:#fee2e2,stroke:#dc2626,color:#7f1d1d;
+    classDef done fill:#d1fae5,stroke:#059669,color:#064e3b;
+    class R,E stop;
+    class I done;
+```
 
 ### Contoh skenario: dompet hitam
 
